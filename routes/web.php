@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('prueba/{name}','PruebaController@prueba');
+
 Route::get('/name/{name}/lastname/{lastname}', function ($name, $lastname=null) {
     return 'Hola soy '.$name.' '.$lastname;
 });
