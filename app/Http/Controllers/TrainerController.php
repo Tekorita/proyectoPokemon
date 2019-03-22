@@ -1,7 +1,7 @@
 <?php
 
 namespace proyectoPokemon\Http\Controllers;
-
+use proyectoPokemon\Trainer;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller
@@ -13,7 +13,8 @@ class TrainerController extends Controller
      */
     public function index()
     {
-        return 'hola soy un entrenador rico';
+        $trainers = Trainer::all();
+        return view('trainers.index', compact('trainers')); //compact es un array trae un listado de los trainers
     }
 
     /**
@@ -34,8 +35,15 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('avatar')){
+            $file = $request->file('avatar');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/',$name);
+            //return $name;
+        }
         $trainer = new Trainer();
-        $trainer->name = $$request->input('name');
+        $trainer->name = $request->input('name');
+        $trainer->avatar = $name;
         $trainer->save();
         return 'Guardado';
         //return $request->input('name');

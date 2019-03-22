@@ -8,6 +8,9 @@
     <title>Proyecto Pokemon - @yield('title')</title>
 </head>
 <body>
+    <div class="navbar navbar-dark bg-primary">
+        <a href="" class="navbar-brand">Proyecto Pokemon</a>
+    </div>
     <div class="container">
         @yield('content')
     </div>  
