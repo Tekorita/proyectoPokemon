@@ -174,6 +174,8 @@ return [
         // proyectoPokemon\Providers\BroadcastServiceProvider::class,
         proyectoPokemon\Providers\EventServiceProvider::class,
         proyectoPokemon\Providers\RouteServiceProvider::class,
+        //Laravel COLLECTIVE a continuacion:
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -225,6 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
