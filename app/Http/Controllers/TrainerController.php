@@ -35,6 +35,11 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name'=>'required|max: 10',
+            'avatar'=>'required|image',
+            'slug'=>'required'
+        ]);
         if($request->hasFile('avatar')){//esta condicional se usa xq el archivo del avatar se tiene que tratar de otra manera diferente que un string
             $file = $request->file('avatar');
             $name = time().$file->getClientOriginalName();
