@@ -56,9 +56,10 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trainer $trainer)
     {
-        //
+        //$trainer = Trainer::find($id); quitamos el $id de parametros y ahora Usemos el implicit binin donde las variables las instanciamos desde el modelo
+        return view('trainers.show', compact('trainer'));
     }
 
     /**
