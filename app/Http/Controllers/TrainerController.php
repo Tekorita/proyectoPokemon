@@ -40,15 +40,16 @@ class TrainerController extends Controller
             'avatar'=>'required|image',
             'slug'=>'required'
         ]);
+        
+        $trainer = new Trainer();
         if($request->hasFile('avatar')){//esta condicional se usa xq el archivo del avatar se tiene que tratar de otra manera diferente que un string
             $file = $request->file('avatar');
             $name = time().$file->getClientOriginalName();
+            $trainer->avatar = $name;
             $file->move(public_path().'/images/',$name);
             //return $name;
-        }
-        $trainer = new Trainer();
-        $trainer->name = $request->input('name');        
-        $trainer->avatar = $name;
+        }                
+        $trainer->name = $request->input('name');                
         $trainer->slug = $request->input('slug');
         $trainer->save();
         return 'Guardado';
