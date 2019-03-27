@@ -10,6 +10,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function roles(){
+        return $this->belongsToMany('proyectoPokemon\Role');//relacion muchos a muchos
+    }
     /**
      * The attributes that are mass assignable.
      *
