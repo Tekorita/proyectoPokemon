@@ -53,7 +53,9 @@ class TrainerController extends Controller
         $trainer->avatar = $name;                
         $trainer->slug = $request->input('slug');
         $trainer->save();
-        return 'Guardado';
+
+        return redirect()->route('trainers.index');
+        //return 'Guardado';
         //return $request->input('name');
         //return $request->all();
     }
@@ -103,7 +105,8 @@ class TrainerController extends Controller
             //return $name;
         }
         $trainer->save();
-        return "Modificado con exito";
+        return redirect()->route('trainers.show', [$trainer]);
+        //return "Modificado con exito";
         //es importante resaltar que en el modelo de trainer para que se puedan editar los campos hay q agregar en el modelo de trainer la siguiente sentencia protected $fillable = ['name', 'avantar'];
     }
 
@@ -118,6 +121,7 @@ class TrainerController extends Controller
         $file_path = public_path().'/images/'.$trainer->avatar;
         \File::delete($file_path);
         $trainer->delete();
-        return $trainer;
+        return redirect()->route('trainers.index');
+        //return 'Eliminado';
     }
 }
