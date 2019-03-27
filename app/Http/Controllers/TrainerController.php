@@ -105,7 +105,7 @@ class TrainerController extends Controller
             //return $name;
         }
         $trainer->save();
-        return redirect()->route('trainers.show', [$trainer]);
+        return redirect()->route('trainers.show', [$trainer])->with('status','Entrenador actualizado correctamente');
         //return "Modificado con exito";
         //es importante resaltar que en el modelo de trainer para que se puedan editar los campos hay q agregar en el modelo de trainer la siguiente sentencia protected $fillable = ['name', 'avantar'];
     }
