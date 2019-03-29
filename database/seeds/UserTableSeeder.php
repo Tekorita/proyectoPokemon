@@ -30,6 +30,12 @@ class UserTableSeeder extends Seeder
         $user->save();
         $user->roles()->attach($role_admin);
 
+        $user = new User();
+        $user->name = "Admin";
+        $user->email = "admin@mail.com";
+        $user->password = bcrypt('query');
+        $user->save();
+        $user->roles()->attach($role_admin);        
 
     }
 }
