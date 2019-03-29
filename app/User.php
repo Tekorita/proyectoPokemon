@@ -23,7 +23,7 @@ class User extends Authenticatable
     }
 
     //esta validacion verifica si tiene varios arreglos osea si es un arreglo o no lo es cuando tienen un solo rol
-    public function hasAnyRole($role){
+    public function hasAnyRole($roles){
         if(is_array($roles)){
             foreach ($roles as $role) {
                 if($this->hasRole($role)){

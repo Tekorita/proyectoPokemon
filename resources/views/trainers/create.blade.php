@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- FORMULARIO HECHO CON LARAVEL COLLECTIVE -->
-    @include('common.errors')
+  <!--  @ include('common.errors') -->
 
     {!! Form::open(['route'=>'trainers.store', 'method' => 'POST', 'files' => true]) !!}
         @include('trainers.form')

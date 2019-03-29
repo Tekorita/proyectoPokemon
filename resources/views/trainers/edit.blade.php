@@ -3,6 +3,7 @@
 
 @section('content')
  <!-- FORMULARIO HECHO CON LARAVEL COLLECTIVE -->
+ 
     {!! Form::model($trainer, ['route' => ['trainers.update', $trainer],'method' =>'PUT','files' => true]) !!}
         @include('trainers.form')
         {!! Form::submit('Editar', ['class'=>'btn btn-primary']) !!}
