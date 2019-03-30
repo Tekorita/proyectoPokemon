@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('prueba/{name}','PruebaController@prueba');
 
 Route::resource('trainers','TrainerController');
+Route::resource('pokemons','PokemonController');
 
 Route::get('/name/{name}/lastname/{lastname}', function ($name, $lastname=null) {
     return 'Hola soy '.$name.' '.$lastname;

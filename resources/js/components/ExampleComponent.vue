@@ -7,6 +7,7 @@
 
                     <div class="card-body">
                         I'm an example component.
+                        soy un puto pokemon coño!
                     </div>
                 </div>
             </div>
