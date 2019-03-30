@@ -15,7 +15,7 @@ class TrainerController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles('admin');
+        $request->user()->authorizeRoles(['admin','user']);
         $trainers = Trainer::all();
         return view('trainers.index', compact('trainers')); //compact es un array trae un listado de los trainers
     }
