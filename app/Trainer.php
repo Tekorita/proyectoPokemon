@@ -16,4 +16,8 @@ class Trainer extends Model
     {
         return 'slug';
     }
+    public function pokemons(){
+        return $this->hasMany('proyectoPokemon\Pokemon'); //aqui hacemos relacion de q un entrenador tendra muchos pokemones
+    }
+
 }
