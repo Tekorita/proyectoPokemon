@@ -26,7 +26,7 @@
 </div>
 </template>
 <script>
-    import EventBus from '../event-bus'; // importamos el eventbus que se nos ayuda a redireccionar a show de pokemones despues de que se agregan
+    import EventBus from '../../event-bus'; // importamos el eventbus que se nos ayuda a redireccionar a show de pokemones despues de que se agregan
     export default{
         data(){
             return {
