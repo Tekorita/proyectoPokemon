@@ -1,7 +1,7 @@
 <?php
 
 namespace proyectoPokemon\Http\Controllers;
-
+use proyectoPokemon\Pokemon;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller

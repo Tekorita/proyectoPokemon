@@ -22,6 +22,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('pokemons-component', require('./components/PokemonsComponent.vue').default);
+Vue.component('add-pokemon-btn', require('./components/AddPokemonComponent.vue').default);
+Vue.component('create-form-pokemon', require('./components/CreatePokemonComponent.vue').default);
 Vue.component('spinner', require('./components/Spinner.vue').default);
 
 /**
