@@ -1838,7 +1838,9 @@ __webpack_require__.r(__webpack_exports__);
     savePokemon: function savePokemon() {
       //console.log(this.name) Para verificar si se pasan los datos
       //console.log(this.picture)
-      axios.post('http://127.0.0.1:8000/pokemons', {
+      var currentRoute = window.location.pathname; //axios.post('http://127.0.0.1:8000/pokemons',{
+
+      axios.post("http://127.0.0.1:8000".concat(currentRoute, "/pokemons"), {
         //axios nos permite realizar peticiones http mediante promesas puede ser get post
         name: this.name,
         picture: this.picture
