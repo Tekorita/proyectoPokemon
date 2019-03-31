@@ -1780,6 +1780,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -1807,6 +1808,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+ // importamos el eventbus que se nos ayuda a redireccionar a show de pokemones despues de que se agregan
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1816,12 +1819,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     savePokemon: function savePokemon() {
+      //console.log(this.name) Para verificar si se pasan los datos
+      //console.log(this.picture)
       axios.post('http://127.0.0.1:8000/pokemons', {
+        //axios nos permite realizar peticiones http mediante promesas puede ser get post
         name: this.name,
         picture: this.picture
       }).then(function (res) {
-        console.log(res);
-        $('addPokemon').modal('hide');
+        //este response es para dar respuesta de que se agrego el pokemon
+        $('#addPokemon').modal('hide');
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('pokemon-added', res.data.pokemon); // genero el evento con informacion para que lo escuche el componente de pokemonscomponents para listarlos
+
+        console.log(res.data.pokemon);
       }).catch(function (err) {
         console.log(err);
       });
@@ -1874,6 +1883,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -1890,6 +1900,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1897,12 +1908,21 @@ __webpack_require__.r(__webpack_exports__);
       loading: true
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('pokemon-added', function (data) {
+      //este esvento .$on nos sirve para escuchar la peticion del componente de created y mostrarla
+      _this.pokemons.push(data); //el evento push nos permite agregar la data en un arreglo
+
+    });
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
     axios.get('http://127.0.0.1:8000/pokemons').then(function (res) {
-      _this.pokemons = res.data;
-      _this.loading = false;
+      _this2.pokemons = res.data;
+      _this2.loading = false;
     });
   }
 });
@@ -37920,7 +37940,7 @@ var render = function() {
                   width: "100px",
                   "background-color": "#EFEFEF"
                 },
-                attrs: { src: "images/", alt: "" }
+                attrs: { src: pokemon.picture, alt: "" }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
@@ -50593,6 +50613,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Spinner_vue_vue_type_template_id_7ae326fe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/event-bus.js":
+/*!***********************************!*\
+  !*** ./resources/js/event-bus.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+var bus = new Vue();
+/* harmony default export */ __webpack_exports__["default"] = (bus);
 
 /***/ }),
 

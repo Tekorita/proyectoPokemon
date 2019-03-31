@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-      	<form @submit.prevent="savePokemon">
+      	<form @submit.prevent="savePokemon"><!-- es necesario prevenir que el formulario se envie por post y que se envie pon un metodo en javascript -->
 	        <div class="form-group">
 			    <label>Pokemon</label>
 			    <input type="text" class="form-control" placeholder="Ingresa el nombre del pokemon" v-model="name">
@@ -26,6 +26,7 @@
 </div>
 </template>
 <script>
+    import EventBus from '../event-bus'; // importamos el eventbus que se nos ayuda a redireccionar a show de pokemones despues de que se agregan
     export default{
         data(){
             return {
@@ -35,13 +36,16 @@
         },
         methods: {
             savePokemon: function(){
-                axios.post('http://127.0.0.1:8000/pokemons',{
+                //console.log(this.name) Para verificar si se pasan los datos
+                //console.log(this.picture)
+                axios.post('http://127.0.0.1:8000/pokemons',{ //axios nos permite realizar peticiones http mediante promesas puede ser get post
                     name: this.name,
                     picture: this.picture
                 })
-                .then(function(res){
-                    console.log(res)
-                    $('addPokemon').modal('hide')
+                .then(function(res){ //este response es para dar respuesta de que se agrego el pokemon
+                    $('#addPokemon').modal('hide')
+                    EventBus.$emit('pokemon-added', res.data.pokemon)// genero el evento con informacion para que lo escuche el componente de pokemonscomponents para listarlos
+                    console.log(res.data.pokemon)
                 })
                 .catch(function(err){
                     console.log(err)
