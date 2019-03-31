@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class PokemonController extends Controller
 {
-    public function index(Request $request){
+    public function index(Trainer $trainer, Request $request){
         if($request->ajax()){
-            $pokemons = Pokemon::all(); //orm de laravel para consultar o mapear todos los objects o pokemones
+            $pokemons = $trainer->pokemons;
+            //$pokemons = Pokemon::all(); //orm de laravel para consultar o mapear todos los objects o pokemones
             return response()->json($pokemons, 200); // 200 xq es una respuesta satisfactoria
+            //return response()->json($pokemons, 200);
         }
         return view('pokemons.index');
     }

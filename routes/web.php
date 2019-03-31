@@ -19,6 +19,7 @@ Route::get('prueba/{name}','PruebaController@prueba');
 
 Route::resource('trainers','TrainerController');
 //Route::resource('pokemons','PokemonController');
+Route::get('trainers/{trainer}/pokemons','PokemonController@index');
 Route::post('trainers/{trainer}/pokemons','PokemonController@store');
 
 Route::get('/name/{name}/lastname/{lastname}', function ($name, $lastname=null) {

@@ -14,6 +14,7 @@
     </div>
     <modal-button></modal-button>
     <create-form-pokemon></create-form-pokemon>
+    <list-of-pokemons></list-of-pokemons>
 @endsection
 
  
