@@ -80,6 +80,7 @@
             @endif
 
             <div class="content">
+                <img style="margin: 20px; height: 200px; width: 200px" class="card-img-top rounded-circle mx-auto d-block" src="/images/pokebola.png" alt="">
                 <div class="title m-b-md">
                     Proyecto Pokemon
                 </div>
